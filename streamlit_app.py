@@ -1,5 +1,6 @@
 import streamlit as st
-from audiorcorder import audiorecorder
+from audiorecorder import audiorecorder
+from recorder import *
 
 st.set_page_config(layout="wide")
 st.title('🎈 CETRAM QuantMed LLM Doctor')
