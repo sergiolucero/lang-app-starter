@@ -11,9 +11,6 @@ AWS_ID = st.secrets['AWS_ID']
 FELIX_BUCKET = 'cetram-felix'
 
 VERSION = '0.3'
-COMPLETION_MODEL = "text-davinci-003"
-TRANSCRIPTION_MODEL = "whisper-1"
-TOP_TOKENS = 3800
 AWS_COPY = 'aws s3 cp %s s3://cetram-estenio/FELIX/UPLOAD/'
 ###############################
 #def openai_logo():

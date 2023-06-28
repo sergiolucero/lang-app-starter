@@ -6,6 +6,10 @@ from langchain import OpenAI
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
+
+COMPLETION_MODEL = "text-davinci-003"
+TRANSCRIPTION_MODEL = "whisper-1"
+TOP_TOKENS = 3800
 ##############################################
 def tokens(text, completion_model):
     encoding=tiktoken.encoding_for_model(completion_model)
