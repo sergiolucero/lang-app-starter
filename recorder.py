@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 from pytz import timezone
 import streamlit as st
-from ai_lib import text_and_soap
+from textlib import text_and_soap
 ###############################
 openai.api_key = st.secrets['OPEN_AI_KEY']
 AWS_KEY = st.secrets['AWS_KEY']
