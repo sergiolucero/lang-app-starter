@@ -1,23 +1,13 @@
 import streamlit as st
 from audiorecorder import audiorecorder
 from recorder import *
-from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION
+from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, chunksum
 
 st.set_page_config(layout="wide")
 st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
 #openai_logo()
 st.write(f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]')
 audio = audiorecorder("Presione para grabar", "Grabando... presione para terminar")
-
-def chunksum(text):
-    result = []
-    with st.form('summarize_form', clear_on_submit=True):
-        with st.spinner('Calculating...'):
-            response = generate_response(text)
-            result.append(response)
-    
-    if len(result):
-        st.info(response)
 
 if len(audio) > 0:
     st.audio(audio.tobytes())

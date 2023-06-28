@@ -2,6 +2,7 @@ import openai
 import glob, os
 import tiktoken
 import time
+import streamlit as st
 
 from langchain import OpenAI
 from langchain.docstore.document import Document
@@ -82,3 +83,14 @@ def text_and_soap(fn):
     s3_upload([fn, txt_fn, soap_fn])
     
     return text, soap, dts
+
+def chunksum(text):    # requires streamlit
+    result = []
+    with st.form('summarize_form', clear_on_submit=True):
+        with st.spinner('Calculating...'):
+            response = generate_response(text)
+            result.append(response)
+    
+    if len(result):
+        st.info(response)
+
