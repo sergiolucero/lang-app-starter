@@ -4,7 +4,7 @@ from recorder import *
 
 st.set_page_config(layout="wide")
 st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
-openai_logo()
+#openai_logo()
 st.write(f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]')
 audio = audiorecorder("Presione para grabar", "Grabando... presione para terminar")
 
