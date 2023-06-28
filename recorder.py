@@ -13,6 +13,17 @@ TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
 AWS_COPY = 'aws s3 cp %s s3://cetram-estenio/FELIX/UPLOAD/'
 ###############################
+def openai_logo():
+    return st.markdown(
+   f'''
+   <style>
+   p {
+   background-image: url('openai.png');
+   }
+   </style>
+   ''',
+   unsafe_allow_html=True)
+    
 def chile_time():
     scl = timezone('America/Santiago')
     scl_time = datetime.now(scl).strftime('%Y-%m-%dT%H-%M-%S')
@@ -80,7 +91,7 @@ def text_and_soap(fn):
     for file in [fn, txt_fn, soap_fn]:     
         fcmd = AWS_COPY %file
         print(f'CMD: {fcmd}')
-        #os.system(fcmd)
+        #os.system(fcmd)  # use boto upload instead
     
     return text, soap, dts
     
