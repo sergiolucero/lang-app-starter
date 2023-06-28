@@ -1,4 +1,4 @@
-eimport boto3
+import boto3
 import openai
 import glob, os
 import tiktoken
