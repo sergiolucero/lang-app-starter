@@ -13,4 +13,4 @@ def s3_upload(files, AWS_ID, AWS_KEY):
             s3.upload_fileobj(open(file,'rb'), 
                           FELIX_BUCKET, file)
         except Exception as e:
-            raise Exception(f'ERROR: {e} FILE: {file}')
+            raise Exception(f'FILE: {file}'\n ERROR: {e} ')
