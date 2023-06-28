@@ -4,6 +4,8 @@ from datetime import datetime
 from pytz import timezone
 import streamlit as st
 from textlib import text_and_soap
+import openai
+#from timelib import chile_time
 ###############################
 openai.api_key = st.secrets['OPEN_AI_KEY']
 AWS_KEY = st.secrets['AWS_KEY']
