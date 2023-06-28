@@ -96,4 +96,3 @@ def chunksum(text):    # requires streamlit
     
     if len(result):
         st.info(response)
-

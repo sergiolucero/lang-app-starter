@@ -9,5 +9,8 @@ def s3_upload(files, AWS_ID, AWS_KEY):
     
     for file in files:     
         print('S3 save:', file)
-        s3.upload_fileobj(open(file,'rb'), 
+        try:
+            s3.upload_fileobj(open(file,'rb'), 
                           FELIX_BUCKET, file)
+        except Exception as e:
+            raise Exception(f'ERROR: {e} FILE: {file}')
