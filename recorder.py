@@ -1,4 +1,4 @@
-import boto3
+eimport boto3
 import openai
 import glob, os
 import tiktoken
@@ -84,7 +84,7 @@ def s3_upload(files):
         #print(f'CMD: {fcmd}')
         #os.system(fcmd)  # use boto upload instead
         filename = f'UPLOAD/{file}'
-        s3.upload_fileobj(file, FELIX_BUCKET, filename)
+        s3.upload_fileobj(open(file,'rb'), FELIX_BUCKET, filename)
 
 def text_and_soap(fn):
     t0=time.time()
