@@ -1,7 +1,5 @@
 import glob, os
 import time
-from datetime import datetime
-from pytz import timezone
 import streamlit as st
 from textlib import text_and_soap
 import openai
@@ -15,15 +13,8 @@ FELIX_BUCKET = 'cetram-felix'
 VERSION = '0.3'
 AWS_COPY = 'aws s3 cp %s s3://cetram-estenio/FELIX/UPLOAD/'
 ###############################
-#def openai_logo():
-#    st.markdown(
-#   f"""
-#   <style>
-#   p {background-image: url('openai.png');}
-#   </style>
-#   """,
-#   unsafe_allow_html=True)
-    
+from datetime import datetime
+from pytz import timezone
 def chile_time():
     scl = timezone('America/Santiago')
     scl_time = datetime.now(scl).strftime('%Y-%m-%dT%H-%M-%S')
