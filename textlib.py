@@ -15,6 +15,7 @@ COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
 VERSION = '0.33'
+AWS_KEY, AWS_ID = st.secrets['AWS_KEY'], st.secrets['AWS_ID']
 ##############################################
 def tokens(text, completion_model):
     encoding=tiktoken.encoding_for_model(completion_model)
@@ -82,7 +83,7 @@ def text_and_soap(fn):
 
     open(txt_fn, 'w').write(text)
     open(soap_fn, 'w').write(soap)
-    s3_upload([fn, txt_fn, soap_fn])
+    s3_upload([fn, txt_fn, soap_fn], AWS_KEY, AWS_ID)
     
     return text, soap, dts
 
