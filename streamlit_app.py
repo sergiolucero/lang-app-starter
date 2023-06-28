@@ -14,10 +14,9 @@ def chunksum(text):
         with st.spinner('Calculating...'):
             response = generate_response(text)
             result.append(response)
-    st.info(result)
     
-if len(result):
-    st.info(response)
+    if len(result):
+        st.info(response)
 
 if len(audio) > 0:
     st.audio(audio.tobytes())
@@ -34,6 +33,6 @@ if len(audio) > 0:
         st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
         st.write(soap)
         st.write('-'*80)
-        st.info(chunksum(text))
+        chunksum(text)
 
         
