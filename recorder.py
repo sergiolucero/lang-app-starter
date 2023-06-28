@@ -15,11 +15,11 @@ AWS_COPY = 'aws s3 cp %s s3://cetram-estenio/FELIX/UPLOAD/'
 ###############################
 def openai_logo():
     st.markdown(
-   f'''
+   f"""
    <style>
    p {background-image: url('openai.png');}
    </style>
-   ''',
+   """,
    unsafe_allow_html=True)
     
 def chile_time():
