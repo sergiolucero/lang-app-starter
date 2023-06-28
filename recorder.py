@@ -75,14 +75,24 @@ def summarize(text, completion_model = COMPLETION_MODEL):
 
     return response
 ##################################################
+from langchain import OpenAI
+from langchain.docstore.document import Document
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.chains.summarize import load_summarize_chain
+
+def generate_response(txt):
+    llm = OpenAI(temperature=0, openai_api_key=openai.api_key)
+    text_splitter = CharacterTextSplitter()
+    texts = text_splitter.split_text(txt)
+    docs = [Document(page_content=t) for t in texts]
+    chain = load_summarize_chain(llm, chain_type='map_reduce')
+    return chain.run(docs)
+
 def s3_upload(files):
     s3 = boto3.client('s3', 
                         aws_access_key_id=AWS_ID,
                         aws_secret_access_key=AWS_KEY)
     for file in files:     
-        #fcmd = AWS_COPY %file
-        #print(f'CMD: {fcmd}')
-        #os.system(fcmd)  # use boto upload instead
         filename = f'UPLOAD/{file}'
         s3.upload_fileobj(open(file,'rb'), FELIX_BUCKET, filename)
 
