@@ -33,5 +33,7 @@ if len(audio) > 0:
         #st.write('add thumbs up/dn buttons to regenerate/accept!')
         st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
         st.write(soap)
+        st.write('-'*80)
+        st.info(chunksum(text))
 
         
