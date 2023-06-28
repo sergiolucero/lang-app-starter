@@ -1,6 +1,6 @@
 import boto3
 import openai
-import os
+import glob, os
 import tiktoken
 import time
 from datetime import datetime
