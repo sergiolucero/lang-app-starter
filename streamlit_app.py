@@ -8,6 +8,17 @@ st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
 st.write(f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]')
 audio = audiorecorder("Presione para grabar", "Grabando... presione para terminar")
 
+def chunksum(text):
+    result = []
+    with st.form('summarize_form', clear_on_submit=True):
+        with st.spinner('Calculating...'):
+            response = generate_response(text)
+            result.append(response)
+    st.info(result)
+    
+if len(result):
+    st.info(response)
+
 if len(audio) > 0:
     st.audio(audio.tobytes())
 
@@ -17,10 +28,10 @@ if len(audio) > 0:
     with col1:
         st.header(f'AUDIO:')   # [dt={dts[0]} secs]
         st.write(text)
-        #files = str(list(glob.glob('AUDIO/*')))
-        #st.write(f'FILES:', files)
                 
     with col2:
         #st.write('add thumbs up/dn buttons to regenerate/accept!')
         st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
         st.write(soap)
+
+        
