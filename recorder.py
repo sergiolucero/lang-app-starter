@@ -16,12 +16,14 @@ def chile_time():
     scl_time = datetime.now(scl).strftime('%Y-%m-%dT%H-%M-%S')
     return scl_time
 ###############################
-def process(audio_bytes):
-    t0 = chile_time()
-    fn = f'AUDIO/test_{t0}.wav'
-    print('saving to:', fn)
+def audiosave(fn, audio_bytes):
     fw = open(fn, 'wb')
     fw.write(audio_bytes)
     fw.close()
 
+def process(audio_bytes):
+    t0 = chile_time()
+    fn = f'AUDIO/{t0}.wav'
+    audiosave(fn, audio_bytes)
+    
     return text_and_soap(fn)
