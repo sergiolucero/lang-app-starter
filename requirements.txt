@@ -1,1 +1,4 @@
+audio-recorder-streamlit
+openai
+langchain
 streamlit
