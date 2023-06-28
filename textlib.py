@@ -4,6 +4,8 @@ import tiktoken
 import time
 import streamlit as st
 
+from awslib import s3_upload
+
 from langchain import OpenAI
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter

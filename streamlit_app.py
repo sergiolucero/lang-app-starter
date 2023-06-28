@@ -1,7 +1,7 @@
 import streamlit as st
 from audiorecorder import audiorecorder
-from recorder import *
-from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, chunksum
+from recorder import process
+from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION
 
 st.set_page_config(layout="wide")
 st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
@@ -12,7 +12,7 @@ audio = audiorecorder("Presione para grabar", "Grabando... presione para termina
 if len(audio) > 0:
     st.audio(audio.tobytes())
     with st.spinner('procesando...'):
-        text, soap, dts = output(audio.tobytes())
+        text, soap, dts = process(audio.tobytes())
         col1, col2 = st.columns(2)
     
         with col1:
