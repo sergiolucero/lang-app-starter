@@ -14,7 +14,7 @@ TOP_TOKENS = 3800
 AWS_COPY = 'aws s3 cp %s s3://cetram-estenio/FELIX/UPLOAD/'
 ###############################
 def openai_logo():
-    return st.markdown(
+    st.markdown(
    f'''
    <style>
    p {
