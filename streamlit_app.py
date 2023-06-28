@@ -16,7 +16,9 @@ if len(audio) > 0:
     with col1:
         st.header(f'AUDIO:')   # [dt={dts[0]} secs]
         st.write(text)
-
+        files = str(list(glob.glob('AUDIO/*')))
+        st.write(f'FILES:', files)
+                
     with col2:
         #st.write('add thumbs up/dn buttons to regenerate/accept!')
         st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
