@@ -2,6 +2,7 @@ import boto3
 import openai
 import os
 import tiktoken
+import time
 from datetime import datetime
 from pytz import timezone
 ###############################
