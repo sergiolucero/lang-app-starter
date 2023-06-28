@@ -1,6 +1,7 @@
 import openai
 import glob, os
 import tiktoken
+import time
 
 from langchain import OpenAI
 from langchain.docstore.document import Document
