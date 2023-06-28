@@ -17,9 +17,7 @@ def openai_logo():
     st.markdown(
    f'''
    <style>
-   p {
-   background-image: url('openai.png');
-   }
+   p {background-image: url('openai.png');}
    </style>
    ''',
    unsafe_allow_html=True)
