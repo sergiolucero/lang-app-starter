@@ -1,4 +1,5 @@
-audio-recorder-streamlit
-openai
+boto3
 langchain
+openai
 streamlit
+streamlit-audio-recorder
