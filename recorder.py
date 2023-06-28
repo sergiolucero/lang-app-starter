@@ -8,8 +8,10 @@ from pytz import timezone
 import streamlit as st
 ###############################
 openai.api_key = st.secrets['OPEN_AI_KEY']
+aws_key = st.secrets['AWS_KEY']
+aws_id = st.secrets['AWS_ID']
 
-VERSION = '0.2'
+VERSION = '0.3'
 COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
@@ -72,6 +74,17 @@ def summarize(text, completion_model = COMPLETION_MODEL):
 
     return response
 ##################################################
+def s3_upload(files):
+    s3 = boto3.client('s3', 
+                        aws_access_key_id=AWS_ID,
+                        aws_secret_access_key=AWS_KEY)
+    for file in files:     
+        #fcmd = AWS_COPY %file
+        #print(f'CMD: {fcmd}')
+        #os.system(fcmd)  # use boto upload instead
+        filename = f'UPLOAD/{file}'
+        s3.upload_fileobj(file, FELIX_BUCKET, filename)
+
 def text_and_soap(fn):
     t0=time.time()
     text = openai_transcribe(fn)
@@ -87,11 +100,7 @@ def text_and_soap(fn):
 
     open(txt_fn, 'w').write(text)
     open(soap_fn, 'w').write(soap)
-
-    for file in [fn, txt_fn, soap_fn]:     
-        fcmd = AWS_COPY %file
-        print(f'CMD: {fcmd}')
-        #os.system(fcmd)  # use boto upload instead
+    s3_upload([fn, txt_fn, soap_fn])
     
     return text, soap, dts
     
