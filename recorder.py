@@ -5,10 +5,9 @@ from textlib import text_and_soap
 import openai
 #from timelib import chile_time
 ###############################
-openai.api_key = st.secrets['OPEN_AI_KEY']
-AWS_KEY = st.secrets['AWS_KEY']
-AWS_ID = st.secrets['AWS_ID']
-FELIX_BUCKET = 'cetram-felix'
+#openai.api_key = st.secrets['OPEN_AI_KEY']
+#AWS_KEY = st.secrets['AWS_KEY']
+#AWS_ID = st.secrets['AWS_ID']
 ###############################
 from datetime import datetime
 from pytz import timezone

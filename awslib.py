@@ -1,5 +1,7 @@
 import boto3
 
+FELIX_BUCKET = 'cetram-felix'
+
 def s3_upload(files, AWS_ID, AWS_KEY):
     s3 = boto3.client('s3', 
                         aws_access_key_id=AWS_ID,
