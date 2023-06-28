@@ -5,8 +5,9 @@ import tiktoken
 import time
 from datetime import datetime
 from pytz import timezone
+import streamlit as st
 ###############################
-openai.api_key = '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'
+openai.api_key = st.secrets['OPEN_AI_KEY']
 COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
