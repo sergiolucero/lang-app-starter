@@ -2,12 +2,19 @@ import boto3
 import openai
 import os
 import tiktoken
+from datetime import datetime
+from pytz import timezone
 ###############################
 openai.api_key = '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'
 COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
 AWS_COPY = 'aws s3 cp %s s3://cetram-estenio/FELIX/UPLOAD/'
+###############################
+def chile_time():
+    scl = timezone('America/Santiago')
+    scl_time = datetime.now(scl).strftime('%Y-%m-%dT%H-%M-%S')
+    return scl_time
 ###############################
 def tokens(text, completion_model):
     encoding=tiktoken.encoding_for_model(completion_model)
