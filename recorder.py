@@ -8,8 +8,8 @@ from pytz import timezone
 import streamlit as st
 ###############################
 openai.api_key = st.secrets['OPEN_AI_KEY']
-aws_key = st.secrets['AWS_KEY']
-aws_id = st.secrets['AWS_ID']
+AWS_KEY = st.secrets['AWS_KEY']
+AWS_ID = st.secrets['AWS_ID']
 
 VERSION = '0.3'
 COMPLETION_MODEL = "text-davinci-003"
