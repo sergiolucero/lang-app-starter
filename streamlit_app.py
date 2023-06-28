@@ -9,3 +9,15 @@ audio = audiorecorder("Presione para grabar", "Grabando... presione para termina
 
 if len(audio) > 0:
     st.audio(audio.tobytes())
+
+    text, soap, dts = output(audio.tobytes())
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.header(f'AUDIO:')   # [dt={dts[0]} secs]
+        st.write(text)
+
+    with col2:
+        #st.write('add thumbs up/dn buttons to regenerate/accept!')
+        st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
+        st.write(soap)
