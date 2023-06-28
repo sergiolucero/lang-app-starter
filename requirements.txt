@@ -3,3 +3,4 @@ langchain
 openai
 streamlit
 streamlit-audiorecorder
+tiktoken
