@@ -10,6 +10,7 @@ import streamlit as st
 openai.api_key = st.secrets['OPEN_AI_KEY']
 AWS_KEY = st.secrets['AWS_KEY']
 AWS_ID = st.secrets['AWS_ID']
+FELIX_BUCKET = 'cetram-felix'
 
 VERSION = '0.3'
 COMPLETION_MODEL = "text-davinci-003"
