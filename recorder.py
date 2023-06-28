@@ -6,7 +6,7 @@ import time
 from datetime import datetime
 from pytz import timezone
 ###############################
-openai.api_key = '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'
+openai.api_key = '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'
 COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
