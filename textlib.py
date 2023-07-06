@@ -16,6 +16,7 @@ TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
 VERSION = '0.34'
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
+openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
 ##############################################
 def tokens(text, completion_model):
