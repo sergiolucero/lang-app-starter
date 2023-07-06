@@ -86,7 +86,7 @@ def text_and_soap(fn):
     
     return text, soap, dts
 
-def chunksum(text):    # requires streamlit
+def chunk_summarie(text):    # requires streamlit
     result = []
     with st.form('summarize_form', clear_on_submit=True):
         with st.spinner('Calculating...'):
