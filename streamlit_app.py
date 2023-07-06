@@ -1,7 +1,7 @@
 import streamlit as st
 from audiorecorder import audiorecorder
 from recorder import process
-from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, chunksum
+from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, chunk_summary
 
 st.set_page_config(layout="wide")
 st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
@@ -24,4 +24,4 @@ if len(audio) > 0:
             st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
             st.write(soap)
             st.write('-'*80)
-            chunksum(text)
+            chunk_summary(text)
