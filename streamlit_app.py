@@ -1,11 +1,12 @@
 import streamlit as st
 from audiorecorder import audiorecorder
 from recorder import process
-from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, chunk_summary
+from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, chunk_summary, API_KEY
 
 st.set_page_config(layout="wide")
 st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
 #openai_logo()
+st.write(f'API={API_KEY}')
 st.write(f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]')
 audio = audiorecorder("Presione para grabar", "Grabando... presione para terminar")
 
