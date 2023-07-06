@@ -15,9 +15,10 @@ COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
 VERSION = '0.33'
+API_KEY = openai.api_key
 ##############################################
 def tokens(text, completion_model):
-    encoding=tiktoken.encoding_for_model(completion_model)
+    encoding = tiktoken.encoding_for_model(completion_model)
     return len(encoding.encode(text))
 
 def openai_transcribe(fn):
@@ -59,7 +60,7 @@ def summarize(text, completion_model = COMPLETION_MODEL):
 
     return response
 
-def generate_response(txt):
+def generate_response(txt):    # uses LangChain!
     llm = OpenAI(temperature=0, openai_api_key=openai.api_key)
     text_splitter = CharacterTextSplitter()
     texts = text_splitter.split_text(txt)
