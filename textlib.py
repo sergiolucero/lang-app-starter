@@ -22,7 +22,7 @@ def tokens(text, completion_model):
     return len(encoding.encode(text))
 
 def openai_transcribe(fn):
-    audio_file= open(fn, "rb")
+    audio_file = open(fn, "rb")
     try:
         transcript = openai.Audio.transcribe(TRANSCRIPTION_MODEL, file=audio_file,
             response_format="text",language="es")# text = transcript.to_dict()['text']
