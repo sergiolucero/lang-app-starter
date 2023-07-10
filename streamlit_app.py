@@ -1,8 +1,8 @@
 import streamlit as st
 from audiorecorder import audiorecorder
 from recorder import process
-from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, 
-from textlib import chunk_summary, API_KEY, diagnostico
+from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, API_KEY
+from textlib import chunk_summary, diagnostico
 
 st.set_page_config(layout="wide")
 st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
