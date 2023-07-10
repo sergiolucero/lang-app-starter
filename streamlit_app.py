@@ -19,7 +19,8 @@ if len(audio) > 0:
     
         with col1:
             st.header(f'AUDIO:')   # [dt={dts[0]} secs]
-            st.write(text)
+            st.write(text[:100]+'...')
+            diagnostico(text)
                     
         with col2:
             #st.write('add thumbs up/dn buttons to regenerate/accept!')
