@@ -14,7 +14,7 @@ from langchain.chains.summarize import load_summarize_chain
 COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
-VERSION = '0.34'
+VERSION = '0.35'
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
 openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
@@ -62,6 +62,28 @@ def summarize(text, completion_model = COMPLETION_MODEL):
 
     return response
 
+def generate_diagnostico(txt):    # uses LangChain!
+    llm = OpenAI(temperature=0, openai_api_key=openai.api_key)
+    text_splitter = CharacterTextSplitter()
+    texts = text_splitter.split_text(txt)
+    docs = [Document(page_content=t) for t in texts]
+    #chain = load_summarize_chain(llm, chain_type='map_reduce')
+
+    prompt_template = """Escribe el diagnóstico diferencial de esto:
+    
+    {text}
+    
+    RESUMEN:"""
+    PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
+    chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
+    chain.run(docs)
+
+
+
+
+    
+    return chain.run(docs)
+
 def generate_response(txt):    # uses LangChain!
     llm = OpenAI(temperature=0, openai_api_key=openai.api_key)
     text_splitter = CharacterTextSplitter()
@@ -98,3 +120,14 @@ def chunk_summary(text):    # requires streamlit
     
     if len(result):
         st.info(response)
+
+def diagnostico(text):
+    result = []
+    with st.form('summarize_form', clear_on_submit=True):
+        with st.spinner('resumiendo diagnóstico...'):
+            response = generate_diagnostico(text)
+            result.append(response)
+    
+    if len(result):
+        st.info(response)
+    
