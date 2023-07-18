@@ -1,11 +1,8 @@
 import os
 import streamlit as st
 from textlib import chunk_summary, diagnostico
-from datetime import datetime
 ##############################
-def fileread():
-    # make this block a function call
-    fecha = datetime.now().strftime('%Y-%m-%d')
+def fileread(fecha):
     pfn = f'previo-{fecha}.txt'
     if os.path.exists(pfn):
         lines = open(pfn, encoding='utf-8').read()
