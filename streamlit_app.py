@@ -19,7 +19,9 @@ def tab(lines):   # should pass date+paciente
     st.write(head)
     st.write(body)
     
-    audio = audiorecorder("Presione para grabar", "Grabando... presione para terminar")
+    audio = audiorecorder("Presione para grabar", 
+                          "Grabando... presione para terminar",
+                         key = head)
     
     if len(audio) > 0:
         st.audio(audio.tobytes())
