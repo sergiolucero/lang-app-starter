@@ -10,7 +10,7 @@ def fileread(fecha):
         #lines = [line.split(chr(10)) for line in lines]
     return lines
     
-def tab(lines):   # should pass date+paciente
+def linetab(lines):   # should pass date+paciente
     #html = open(filename).read()
     slines = lines.lstrip().split(chr(10))
     head = slines[0]
