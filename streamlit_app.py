@@ -3,12 +3,15 @@ from audiorecorder import audiorecorder
 from recorder import process
 from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, API_KEY
 from textlib import chunk_summary, diagnostico
+from datetime import datetime
 
 st.set_page_config(layout="wide")
 st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
 #openai_logo()
 #st.write(f'API={API_KEY}')
-st.write(f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]')
+fecha = datetime.now().strftime('%Y-%m-%d')
+dropline = f'(version {VERSION}). Fecha={fecha}. Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
+st.write(dropline)
 audio = audiorecorder("Presione para grabar", "Grabando... presione para terminar")
 
 if len(audio) > 0:
