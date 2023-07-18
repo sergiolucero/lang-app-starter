@@ -16,7 +16,7 @@ def linetabs(fecha):
     lines = fileread(fecha)
     tabs = {}
     for line in lines:
-        paciente = line.split(chr(10))[0].split(':')[0]  # drops patient_id
+        paciente = line.split(chr(10))[0][:5]  # drops patient_id
         tab = linetab(line, fecha, paciente) 
         tabs[paciente] = tab
     
@@ -25,9 +25,12 @@ def linetabs(fecha):
 def linetab(lines, fecha, paciente):   
     #html = open(filename).read()
     slines = lines.lstrip().split(chr(10))
-    head = slines[0]
+    head = slines[0]  # dos líneas: (hora+ID, nombre paciente)
+    horaPID, nombre_paciente = head
+    head[0] = head[0][:5]
+
     body = slines[1:]
-    st.info(head)
+    st.info(head)  # 
     for bodline in body:
         st.write(bodline)
     
@@ -38,7 +41,7 @@ def linetab(lines, fecha, paciente):
     if len(audio) > 0:
         st.audio(audio.tobytes())
         with st.spinner('procesando...'):
-            text, soap, dts = process(audio.tobytes(), fecha, paciente)
+            text, soap, dts = process(audio.tobytes(), fecha, nombre_paciente)
             col1, col2 = st.columns(2)
         
             with col1:
