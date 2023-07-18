@@ -26,7 +26,7 @@ def linetab(lines, fecha, paciente):
     #html = open(filename).read()
     slines = lines.lstrip().split(chr(10))
     head = slines[0]  # dos líneas: (hora+ID, nombre paciente)
-    st.write('HEAD:', head[0])
+    st.write('HEAD:', head.split(chr(10))[0])
     horaPID, nombre_paciente = head
     head[0] = head[0][:5]
 
