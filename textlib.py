@@ -14,7 +14,7 @@ from langchain.chains.summarize import load_summarize_chain
 COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
-VERSION = '0.35'
+VERSION = '0.36'   # adding date->summaries
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
 openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
