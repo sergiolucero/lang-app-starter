@@ -13,7 +13,7 @@ st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
 ############################ tabbing 
 def tab(lines):   # should pass date+paciente
     #html = open(filename).read()
-    slines = lines.split(chr(10))
+    slines = lines.lstrip().split(chr(10))
     head = slines[0]
     body = slines[1:]
     st.write(head)
