@@ -1,6 +1,8 @@
 import os
 import streamlit as st
 from textlib import chunk_summary, diagnostico
+from audiorecorder import audiorecorder
+from recorder import process
 ##############################
 def fileread(fecha):
     pfn = f'previo-{fecha}.txt'
