@@ -28,7 +28,7 @@ def linetab(lines):   # should pass date+paciente
     head = slines[0]
     body = slines[1:]
     st.write(head)
-    st.write(body)
+    st.table(body)
     
     audio = audiorecorder("Presione para grabar", 
                           "Grabando... presione para terminar",
