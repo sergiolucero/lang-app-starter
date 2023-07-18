@@ -1,4 +1,4 @@
-eimport openai
+import openai
 import glob, os
 import tiktoken
 import time
@@ -101,7 +101,7 @@ def text_and_soap(fn, fecha, paciente):
     ficha_fn = fn.replace('.wav','.json')
     
     ficha = {'fecha': fecha, 'paciente': paciente, 'wav': soap_fn}
-    json.dumps(ficha, open(ficha_fn, 'w'))
+    json.dump(ficha, open(ficha_fn, 'w'))
     open(txt_fn, 'w').write(text)
     open(soap_fn, 'w').write(soap)
     s3_upload([fn, txt_fn, soap_fn])
