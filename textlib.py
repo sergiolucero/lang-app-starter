@@ -1,7 +1,8 @@
-import openai
+eimport openai
 import glob, os
 import tiktoken
 import time
+import json
 import streamlit as st
 
 from awslib import s3_upload
@@ -14,7 +15,7 @@ from langchain.chains.summarize import load_summarize_chain
 COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
-VERSION = '0.36'   # adding date->summaries
+VERSION = '0.37'   # adding date->summaries + json
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
 openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
@@ -77,10 +78,6 @@ def generate_diagnostico(txt):    # uses LangChain!
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
     chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
     chain.run(docs)
-
-
-
-
     
     return chain.run(docs)
 
@@ -90,24 +87,25 @@ def generate_response(txt):    # uses LangChain!
     texts = text_splitter.split_text(txt)
     docs = [Document(page_content=t) for t in texts]
     chain = load_summarize_chain(llm, chain_type='map_reduce')
+
     return chain.run(docs)
 
-def text_and_soap(fn):
-    t0=time.time()
+def text_and_soap(fn, fecha, paciente):
     text = openai_transcribe(fn)
-    t1=time.time()
     print('TEXT:', text)
     soap = soapit(text)
-    t2=time.time()
-    dts = [round(t1-t0,2), round(t2-t1,2)]
-
+    
     # uploading audio + 2 texts           (added 06-15)
     txt_fn = fn.replace('.wav','.txt')
     soap_fn = fn.replace('.wav','_soap.txt')
-
+    ficha_fn = fn.replace('.wav','.json')
+    
+    ficha = {'fecha': fecha, 'paciente': paciente, 'wav': soap_fn}
+    json.dumps(ficha, open(ficha_fn, 'w'))
     open(txt_fn, 'w').write(text)
     open(soap_fn, 'w').write(soap)
     s3_upload([fn, txt_fn, soap_fn])
+    dts = [0,1] # random fill
     
     return text, soap, dts
 
