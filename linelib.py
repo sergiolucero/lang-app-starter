@@ -27,10 +27,12 @@ def linetab(lines, fecha, paciente):
     slines = lines.lstrip().split(chr(10))
     head = slines[0]  # dos líneas: (hora+ID, nombre paciente)
     head_split = head.split()
-    st.write('HEAD:', head_split[0][:5])
-    st.write('PAT:', ' '.join(head_split[1:]))
+    #st.write('HEAD:', head_split[0][:5])
+    #st.write('PAT:', ' '.join(head_split[1:]))
     #head[0] = head[0][:5]
-
+    #st.write('HEAD:', head_split[0][:5])
+    nombre_paciente = ' '.join(head_split[1:])
+    
     body = slines[1:]
     st.info(head)  # 
     for bodline in body:
