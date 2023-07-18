@@ -17,12 +17,12 @@ def linetabs(fecha):
     tabs = {}
     for line in lines:
         paciente = line.split(chr(10))[0]
-        tab = linetab(line) 
+        tab = linetab(line, fecha, paciente) 
         tabs[paciente] = tab
     
     return tabs
     
-def linetab(lines):   # should pass date+paciente
+def linetab(lines, fecha, paciente):   
     #html = open(filename).read()
     slines = lines.lstrip().split(chr(10))
     head = slines[0]
@@ -38,7 +38,7 @@ def linetab(lines):   # should pass date+paciente
     if len(audio) > 0:
         st.audio(audio.tobytes())
         with st.spinner('procesando...'):
-            text, soap, dts = process(audio.tobytes())
+            text, soap, dts = process(audio.tobytes(), fecha, paciente)
             col1, col2 = st.columns(2)
         
             with col1:
