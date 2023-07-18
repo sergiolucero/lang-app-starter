@@ -1,6 +1,18 @@
+import os
 import streamlit as st
 from textlib import chunk_summary, diagnostico
-
+from datetime import datetime
+##############################
+def fileread():
+    # make this block a function call
+    fecha = datetime.now().strftime('%Y-%m-%d')
+    pfn = f'previo-{fecha}.txt'
+    if os.path.exists(pfn):
+        lines = open(pfn, encoding='utf-8').read()
+        lines = lines.split('-'*80)
+        #lines = [line.split(chr(10)) for line in lines]
+    return lines
+    
 def tab(lines):   # should pass date+paciente
     #html = open(filename).read()
     slines = lines.lstrip().split(chr(10))
