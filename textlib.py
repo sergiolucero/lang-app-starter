@@ -60,7 +60,8 @@ def summarize(text, completion_model = COMPLETION_MODEL):
             )
     except Exception as e:
         transcript = f'RESUMEN SOAP FALLIDO: {e}'
-
+        response = get_chunk_summary(text)
+        
     return response
 
 def generate_diagnostico(txt):    # uses LangChain!
@@ -108,6 +109,15 @@ def text_and_soap(fn, fecha, paciente):
     dts = [0,1] # random fill
     
     return text, soap, dts
+
+def get_chunk_summary(text):
+    
+    result = []
+    with st.form('summarize_form', clear_on_submit=True):
+        with st.spinner('Calculating...'):
+            response = generate_response(text)
+            result.append(response)
+    return response
 
 def chunk_summary(text):    # requires streamlit
     result = []
