@@ -1,4 +1,4 @@
-eimport os
+import os
 import streamlit as st
 from textlib import chunk_summary, diagnostico
 from audiorecorder import audiorecorder
@@ -28,7 +28,7 @@ def linetab(lines, fecha, paciente):
     head = slines[0]  # dos líneas: (hora+ID, nombre paciente)
     st.write('HEAD:', head.split()[0])
     st.write('PAT:', head.split()[1])
-    horaPID, nombre_paciente = head.split(chr(10))
+    horaPID, nombre_paciente = head.split()
     #head[0] = head[0][:5]
 
     body = slines[1:]
