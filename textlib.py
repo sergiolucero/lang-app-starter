@@ -104,7 +104,7 @@ def text_and_soap(fn, fecha, paciente):
     json.dump(ficha, open(ficha_fn, 'w'))
     open(txt_fn, 'w').write(text)
     open(soap_fn, 'w').write(soap)
-    s3_upload([fn, txt_fn, soap_fn])
+    s3_upload([fn, txt_fn, soap_fn, ficha_fn])
     dts = [0,1] # random fill
     
     return text, soap, dts
