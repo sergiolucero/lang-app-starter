@@ -27,8 +27,9 @@ def linetab(lines):   # should pass date+paciente
     slines = lines.lstrip().split(chr(10))
     head = slines[0]
     body = slines[1:]
-    st.write(head)
-    st.table(body)
+    st.info(head)
+    for bodline in body:
+        st.write(bodline)
     
     audio = audiorecorder("Presione para grabar", 
                           "Grabando... presione para terminar",
