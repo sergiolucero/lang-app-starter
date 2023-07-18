@@ -18,8 +18,8 @@ if len(audio) > 0:
         col1, col2 = st.columns(2)
     
         with col1:
-            st.header(f'AUDIO:')   # [dt={dts[0]} secs]
-            st.write(text[:100]+'...')
+            st.header(f'TRANSCRIPCION AUDIO:')   # [dt={dts[0]} secs]
+            st.info(text)  # was write
             #diagnostico(text)
                     
         with col2:
