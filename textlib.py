@@ -113,10 +113,12 @@ def text_and_soap(fn, fecha, paciente):
 def get_chunk_summary(text):
     
     result = []
-    with st.form('summarize_form', clear_on_submit=True):
+    #with st.form('summarize_form', clear_on_submit=True):
+    if True:
         with st.spinner('Calculating...'):
             response = generate_response(text)
             result.append(response)
+            
     return response
 
 def chunk_summary(text):    # requires streamlit
