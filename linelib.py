@@ -48,12 +48,14 @@ def linetab(lines, fecha, paciente):
             text, soap, dts = process(audio.tobytes(), fecha, nombre_paciente)
             col1, col2 = st.columns(2)
         
-            with col1:
+            #with col1:
+            if True:
                 st.header(f'TRANSCRIPCION AUDIO:')   # [dt={dts[0]} secs]
                 st.info(text)  # was write
                 #diagnostico(text)
                         
-            with col2:
+            #with col2:
+                if True:
                 #st.write('add thumbs up/dn buttons to regenerate/accept!')
                 st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
                 st.write(soap)
