@@ -16,9 +16,9 @@ COMPLETION_MODEL = "text-davinci-003"
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
 VERSION = '0.37'   # adding date->summaries + json
-os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
-openai.api_key = os.environ['OPENAI_API_KEY']
-API_KEY = openai.api_key
+#os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
+#openai.api_key = os.environ['OPENAI_API_KEY']
+#API_KEY = openai.api_key
 ##############################################
 def tokens(text, completion_model):
     encoding = tiktoken.encoding_for_model(completion_model)
