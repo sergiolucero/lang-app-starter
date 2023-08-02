@@ -133,7 +133,8 @@ def chunk_summary(text):    # requires streamlit
 
 def diagnostico(text):
     result = []
-    with st.form('summarize_form', clear_on_submit=True):
+    #with st.form('summarize_form', clear_on_submit=True):
+    if True:
         with st.spinner('resumiendo diagnóstico...'):
             response = generate_diagnostico(text)
             result.append(response)
