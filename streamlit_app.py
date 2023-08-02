@@ -1,5 +1,6 @@
 import streamlit as st
-from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION, API_KEY
+from textlib import COMPLETION_MODEL, TRANSCRIPTION_MODEL, VERSION
+#, API_KEY
 from linelib import linetabs
 from datetime import datetime
 ##############################################
