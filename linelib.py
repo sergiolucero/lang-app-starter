@@ -15,10 +15,11 @@ def fileread(fecha):
 def linetabs(fecha):
     lines = fileread(fecha)
     tabs = {}
-    for line in lines:
-        paciente = line.split(chr(10))[0][:5]  # drops patient_id
-        tab = linetab(line, fecha, paciente) 
-        tabs[paciente] = tab
+    #for line in lines:
+    line = lines[0]
+    paciente = line.split(chr(10))[0][:5]  # drops patient_id
+    tab = linetab(line, fecha, paciente) 
+    tabs[paciente] = tab
     
     return tabs
     
@@ -34,9 +35,9 @@ def linetab(lines, fecha, paciente):
     nombre_paciente = ' '.join(head_split[1:])
     
     body = slines[1:]
-    st.info(head)  # 
-    for bodline in body:
-        st.write(bodline)
+    #st.info(head)  # 
+    #for bodline in body:
+    #    st.write(bodline)
     
     audio = audiorecorder("Presione para grabar", 
                           "Grabando... presione para terminar",
