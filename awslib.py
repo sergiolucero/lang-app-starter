@@ -2,8 +2,8 @@ import boto3
 import streamlit as st
 
 FELIX_BUCKET = 'cetram-felix'
-#AWS_KEY = st.secrets['AWS_KEY'] 
-#AWS_ID = st.secrets['AWS_ID']
+AWS_KEY = st.secrets['AWS_KEY'] 
+AWS_ID = st.secrets['AWS_ID']
 
 def t3_upload(files):
     pass
