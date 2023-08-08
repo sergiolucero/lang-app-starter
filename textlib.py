@@ -91,7 +91,7 @@ def generate_response(txt):    # uses LangChain!
 
     return chain.run(docs)
 
-def text_and_soap(fn, fecha, paciente):
+def text_and_soap(fn): #, fecha, paciente):
     text = openai_transcribe(fn)
     print('TEXT:', text)
     soap = soapit(text)
@@ -101,7 +101,7 @@ def text_and_soap(fn, fecha, paciente):
     soap_fn = fn.replace('.wav','_soap.txt')
     ficha_fn = fn.replace('.wav','.json')
     
-    ficha = {'fecha': fecha, 'paciente': paciente, 'wav': soap_fn}
+    ficha = {'fecha': 'fecha', 'paciente': 'paciente', 'wav': soap_fn}  # 8/8 dumb down
     json.dump(ficha, open(ficha_fn, 'w'))
     open(txt_fn, 'w').write(text)
     open(soap_fn, 'w').write(soap)
