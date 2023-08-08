@@ -76,3 +76,8 @@ def simple_recorder():
         
             st.header(f'TRANSCRIPCION AUDIO:')   # [dt={dts[0]} secs]
             st.info(text)  # was write
+
+            st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
+            st.write(soap)
+            st.write('-'*80)
+            chunk_summary(text)
