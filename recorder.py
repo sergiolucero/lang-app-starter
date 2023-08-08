@@ -9,9 +9,8 @@ def audiosave(fn, audio_bytes):
     fw.write(audio_bytes)
     fw.close()
 
-def process(audio_bytes, fecha, paciente):
+def process(audio_bytes): #, fecha, paciente):
     t0 = chile_time()
     fn = f'AUDIO/{t0}.wav'
     audiosave(fn, audio_bytes)
-
-    return text_and_soap(fn, fecha, paciente)
+    return text_and_soap(fn) #, fecha, paciente)
