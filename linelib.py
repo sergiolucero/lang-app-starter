@@ -62,3 +62,17 @@ def linetab(lines, fecha, paciente):
                 st.write(soap)
                 st.write('-'*80)
                 chunk_summary(text)
+
+def simple_recorder():   
+    
+    audio = audiorecorder("Presione para grabar", 
+                          "Grabando... presione para terminar")
+    
+    if len(audio) > 0:
+        st.audio(audio.tobytes())
+        with st.spinner('procesando...'):
+            text, soap, dts = process(audio.tobytes())
+            col1, col2 = st.columns(2)
+        
+            st.header(f'TRANSCRIPCION AUDIO:')   # [dt={dts[0]} secs]
+            st.info(text)  # was write
