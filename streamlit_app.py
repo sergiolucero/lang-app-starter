@@ -11,4 +11,5 @@ st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
 dropline = f'(version {VERSION}). Fecha={fecha}. Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
 st.write(dropline)
 ############################
+# FUTURE: https://blog.streamlit.io/how-to-build-the-streamlit-webrtc-component/   
 simple_recorder()
