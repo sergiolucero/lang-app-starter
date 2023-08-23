@@ -22,7 +22,7 @@ with tab2:
     contents = s3_contents()  # now filter and group by date
     # AUDIO/2023-08-23T08-54-16_soap.txt
     contents = [fn for fn in contents if fn.startswith('AUDIO/')]
-    datetimes = list(set([fn[:25] for fn in contents]))
+    datetimes = sorted(list(set([fn[:25] for fn in contents])))
     dt_contents = {dt: [x for x in contents if x.startswith(dt)] 
                    for dt in datetimes}
     st.table(dt_contents)
