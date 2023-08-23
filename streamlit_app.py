@@ -20,4 +20,4 @@ with tab1:
 with tab2:
     st.header('Contents of cetram-felix/AUDIO')
     contents = s3_contents()  
-    st.write(contents)
+    st.table(contents)
