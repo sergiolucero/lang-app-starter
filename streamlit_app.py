@@ -18,4 +18,6 @@ with tab1:
     # FUTURE: https://blog.streamlit.io/how-to-build-the-streamlit-webrtc-component/   
     simple_recorder()
 with tab2:
-    st.write('FUTURE: list contents of cetram-felix/AUDIO')
+    st.header('Contents of cetram-felix/AUDIO')
+    contents = s3_contents()
+    st.table(contents)
