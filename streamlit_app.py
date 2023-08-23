@@ -25,4 +25,6 @@ with tab2:
     datetimes = sorted(list(set([fn[:25] for fn in contents])))
     dt_contents = {dt: [x for x in contents if x.startswith(dt)] 
                    for dt in datetimes}
+    # eventually display TXT content: obj = s3.get_object(Bucket=bucket_name, Key=file_key)
+    # return obj['Body'].read().decode('utf-8')
     st.table(dt_contents)
