@@ -1,4 +1,4 @@
-import boto3
+eimport boto3
 import streamlit as st   # only for secrets!
 FELIX_BUCKET = 'cetram-felix'
 AWS_KEY = st.secrets['AWS_KEY'] 
@@ -32,11 +32,13 @@ def s3_contents():
             if x.endswith('.txt'):  # read and replace
                 obj = s3.get_object(Bucket=FELIX_BUCKET, Key=x)
                 xx = obj['Body'].read().decode('utf-8')
+                if 'María' in xx or 'Maria' in xx or 'Lucero' in xx:
+                    xx = 'CENSURADO'
             else:
                 xx = x
             nu_tv.append(xx)
         dt_contents[dt] = nu_tv
-    print('CONTENTS:', dt_contents)
+    #print('CONTENTS:', dt_contents)
     
     return dt_contents
     
