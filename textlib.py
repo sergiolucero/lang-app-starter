@@ -13,9 +13,11 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
 
 COMPLETION_MODEL = "text-davinci-003"
+LANGUAGE = 'en'; # was 'es' for CETRAM
+PROMPT = 'You are an attendant at a conference. Write down the main points:'
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
-VERSION = '0.38_20230808'   # adding date->summaries + json
+VERSION = '0.39_20230823'   # Felix takes notes, no SOAP
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
 openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
@@ -28,7 +30,7 @@ def openai_transcribe(fn):
     audio_file = open(fn, "rb")
     try:
         transcript = openai.Audio.transcribe(TRANSCRIPTION_MODEL, file=audio_file,
-            response_format="text",language="es")# text = transcript.to_dict()['text']
+            response_format="text",language=LANGUAGE)# text = transcript.to_dict()['text']
     except Exception as e:
         transcript = f'TRANSCRIPCIÓN FALLIDA: (FILE={fn}) \n ERROR={e}'
     
@@ -41,7 +43,8 @@ def soapit(text, completion_model = COMPLETION_MODEL):
     try:        # should use LangChain Prompts
         response = openai.Completion.create(
           model=completion_model,
-          prompt=f"resume este texto en formato médico SOAP:\n\n{text}",
+          #prompt=f"resume este texto en formato médico SOAP:\n\n{text}",
+          prompt=f"{PROMPT}\n\n{text}",
           temperature=1, max_tokens=MAX_TOKENS,
           top_p=1.0,frequency_penalty=0.0,presence_penalty=0.0)
         return response.to_dict()['choices'][0]['text']
