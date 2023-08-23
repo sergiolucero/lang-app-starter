@@ -1,4 +1,4 @@
-eimport boto3
+import boto3
 import streamlit as st   # only for secrets!
 FELIX_BUCKET = 'cetram-felix'
 AWS_KEY = st.secrets['AWS_KEY'] 
