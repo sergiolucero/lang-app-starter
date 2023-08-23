@@ -19,12 +19,5 @@ with tab1:
     simple_recorder()
 with tab2:
     st.header('Contents of cetram-felix/AUDIO')
-    contents = s3_contents()  # now filter and group by date
-    # AUDIO/2023-08-23T08-54-16_soap.txt
-    contents = [fn for fn in contents if fn.startswith('AUDIO/')]
-    datetimes = sorted(list(set([fn[:25] for fn in contents])))
-    dt_contents = {dt: [x for x in contents if x.startswith(dt)] 
-                   for dt in datetimes}
-    # eventually display TXT content: obj = s3.get_object(Bucket=bucket_name, Key=file_key)
-    # return obj['Body'].read().decode('utf-8')
-    st.table(dt_contents)
+    contents = s3_contents()  
+    st.table(s3_contents)
