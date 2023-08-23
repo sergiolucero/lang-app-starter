@@ -36,6 +36,8 @@ def s3_contents():
                 xx = x
             nu_tv.append(xx)
         dt_contents[dt] = nu_tv
+    print('CONTENTS:', dt_contents)
+    
     return dt_contents
     
 def s3_upload(files):
