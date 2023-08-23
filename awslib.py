@@ -18,7 +18,25 @@ def s3_contents():
     file_names = []
     for content in results.get('Contents', []):
         file_names.append(content['Key'])
-    return file_names
+
+    # now filter and group by date
+    # AUDIO/2023-08-23T08-54-16_soap.txt
+    contents = [fn for fn in file_names if fn.startswith('AUDIO/')]
+    datetimes = sorted(list(set([fn[:25] for fn in contents])))
+    dt_contents = {dt: [x for x in contents if x.startswith(dt)] 
+                   for dt in datetimes}
+    for dt in dt_contents.keys():
+        dtv = dt_contents[dt]
+        nu_tv = []
+        for x in dtv:
+            if x.endswith('.txt'):  # read and replace
+                obj = s3.get_object(Bucket=bucket_name, Key=x)
+                xx = obj['Body'].read().decode('utf-8')
+            else:
+                xx = x
+            nu_tv.append(xx)
+        dt_contents[dt] = nu_tv
+    return dt_contents
     
 def s3_upload(files):
     s3 = s3_client() 
