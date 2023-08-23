@@ -30,7 +30,7 @@ def s3_contents():
         nu_tv = []
         for x in dtv:
             if x.endswith('.txt'):  # read and replace
-                obj = s3.get_object(Bucket=bucket_name, Key=x)
+                obj = s3.get_object(Bucket=FELIX_BUCKET, Key=x)
                 xx = obj['Body'].read().decode('utf-8')
             else:
                 xx = x
