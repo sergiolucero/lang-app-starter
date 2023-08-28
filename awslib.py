@@ -21,7 +21,7 @@ def s3_contents():
     # now filter and group by date
     # AUDIO/2023-08-23T08-54-16_soap.txt
     contents = [fn for fn in file_names if fn.startswith('AUDIO/')]
-    datetimes = sorted(list(set([fn[:25] for fn in contents])))
+    datetimes = sorted(list(set([fn[:16] for fn in contents])))
     datetimes = [dt for dt in datetimes[-20:] if not dt.endswith('.mp3')]
     dt_contents = {dt: [x for x in contents if x.startswith(dt)] 
                    for dt in datetimes}
