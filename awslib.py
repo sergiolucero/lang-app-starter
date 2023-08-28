@@ -31,7 +31,7 @@ def s3_contents():
         for x in dtv:
             if x.endswith('.txt'):  # read and replace
                 obj = s3.get_object(Bucket=FELIX_BUCKET, Key=x)
-                xx = obj['Body'].read().decode('utf-8')
+                xx = 'Maria' #obj['Body'].read().decode('utf-8')
                 if 'María' in xx or 'Maria' in xx or 'Lucero' in xx:
                     xx = 'CENSURADO'
             else:
