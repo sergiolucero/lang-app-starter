@@ -40,7 +40,7 @@ def s3_contents():
         dt_contents[dt] = nu_tv
     #print('CONTENTS:', dt_contents)
     
-    return dt_contents.T
+    return dt_contents
     
 def s3_upload(files):
     s3 = s3_client() 
