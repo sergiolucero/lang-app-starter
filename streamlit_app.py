@@ -6,7 +6,7 @@ from datetime import datetime
 ##############################################
 st.set_page_config(layout="wide")
 fecha = datetime.now().strftime('%Y-%m-%d')
-#fecha = '2023-07-25'  # HARDCODED IN DAVIS!
+
 tab1, tab2 = st.tabs(['Grabación','Revisión'])
 with tab1:
     st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
