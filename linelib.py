@@ -63,6 +63,10 @@ def linetab(lines, fecha, paciente):
                 st.write('-'*80)
                 chunk_summary(text)
 
+def video_recorder():
+    pass
+    # FUTURE: https://blog.streamlit.io/how-to-build-the-streamlit-webrtc-component/   
+
 def simple_recorder():   
     
     audio = audiorecorder("Presione para grabar", 
