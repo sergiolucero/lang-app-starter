@@ -14,7 +14,7 @@ from langchain.chains.summarize import load_summarize_chain
 
 COMPLETION_MODEL = "text-davinci-003"
 #LANGUAGE = 'en'; # was 'es' for CETRAM
-LANGUAGE = 'es' for CETRAM
+LANGUAGE = 'es'; # for CETRAM
 #PROMPT = 'You are an attendant at a conference. Write down the main points:'
 PROMPT = 'Dame los puntos principales del siguiente podcast:'
 
