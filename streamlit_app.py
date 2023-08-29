@@ -1,6 +1,6 @@
 import streamlit as st
 from awslib import s3_contents
-from textlib import COMPLETION_MODEL, LANGUAGE, PROMPT, TRANSCRIPTION_MODEL, VERSION
+from textlib import droplines
 from linelib import simple_recorder # was linetabs
 from datetime import datetime
 ##############################################
@@ -10,10 +10,8 @@ fecha = datetime.now().strftime('%Y-%m-%d')
 tab1, tab2 = st.tabs(['Grabación','Revisión'])
 with tab1:
     st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
-    dropline = f'(version {VERSION}). Fecha={fecha}. Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
-    st.write(dropline)
-    dropline2 = f'Language: {LANGUAGE}. Prompt: {PROMPT}'
-    st.write(dropline2)
+    for dropline in droplines:
+        st.write(dropline)
     ############################
     # FUTURE: https://blog.streamlit.io/how-to-build-the-streamlit-webrtc-component/   
     simple_recorder()
