@@ -28,6 +28,9 @@ os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
 openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
 ##############################################
+droplines = [f'(version {VERSION}). Fecha={fecha}. Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
+            f'Language: {LANGUAGE}. Prompt: {PROMPT}']
+    
 def tokens(text, completion_model):
     encoding = tiktoken.encoding_for_model(completion_model)
     return len(encoding.encode(text))
