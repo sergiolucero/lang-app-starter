@@ -13,14 +13,17 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
 
 COMPLETION_MODEL = "text-davinci-003"
-#LANGUAGE = 'en'; # was 'es' for CETRAM
-LANGUAGE = 'es'; # for CETRAM
-#PROMPT = 'You are an attendant at a conference. Write down the main points:'
-PROMPT = 'Dame los puntos principales del siguiente podcast:'
+CETRAM = False
+if CETRAM:
+    LANGUAGE = 'es'; # for CETRAM
+    PROMPT = 'Dame los puntos principales del siguiente podcast:'
+else:
+    LANGUAGE = 'en'; # was 'es' for CETRAM
+    PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
 
 TRANSCRIPTION_MODEL = "whisper-1"
 TOP_TOKENS = 3800
-VERSION = '0.39_20230823'   # Felix takes notes, no SOAP
+VERSION = '0.40_20230829'   # IF CETRAM
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
 openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
