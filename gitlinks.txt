@@ -9,11 +9,16 @@ Diarization:    https://towardsdatascience.com/unlock-the-power-of-audio-data-ad
 [LangChain]
 Summarization:  https://python.langchain.com/docs/use_cases/summarization
 IDEM:           https://blog.futuresmart.ai/summarizing-documents-made-easy-with-langchain-summarizer
+LangBOT:        https://betterprogramming.pub/building-a-multi-document-reader-and-chatbot-with-langchain-and-chatgpt-d1864d47e339
+
+[PINECONE]
+PDF_Loader:  https://medium.com/@rubentak/talk-to-your-pdf-files-in-a-pinecone-vector-databases-with-gpt-4-a-step-by-step-tutorial-1632cf7aa041
 
 [OpenAI]
 GORILLA:   https://colab.research.google.com/drive/1DEBPsccVLF_aUnmD0FwPeHFrtdC0QIUP?usp=sharing
 FineTuning: https://platform.openai.com/docs/guides/fine-tuning
 FT2:        https://www.datacamp.com/tutorial/fine-tuning-gpt-3-using-the-open-ai-api-and-python
+
 [ParkVox]
 HTK features: https://github.com/danijel3/PyHTK/blob/master/python-notebooks/HTKFeaturesExplained.ipynb
 ROC Curve: https://janakiev.com/blog/pytorch-iris/
