@@ -17,7 +17,8 @@ COMPLETION_MODEL = "text-davinci-003"
 CETRAM = True
 if CETRAM:
     LANGUAGE = 'es'; # for CETRAM
-    PROMPT = 'Dame los puntos principales del siguiente podcast:'
+    #PROMPT = 'Dame los puntos principales del siguiente podcast:'
+    PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
 else:
     LANGUAGE = 'en'; # was 'es' for CETRAM
     PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
