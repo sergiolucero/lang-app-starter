@@ -14,7 +14,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
 
 COMPLETION_MODEL = "text-davinci-003"
-CETRAM = False
+CETRAM = True
 if CETRAM:
     LANGUAGE = 'es'; # for CETRAM
     PROMPT = 'Dame los puntos principales del siguiente podcast:'
