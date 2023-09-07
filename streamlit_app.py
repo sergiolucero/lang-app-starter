@@ -8,8 +8,8 @@ fuente = st.selectbox(['CETRAM', 'inglés'])
 tab1, tab2 = st.tabs(['Grabación','Revisión'])
 with tab1:
     st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
-    for dropline in droplines:
-        st.write(dropline[fuente])
+    for dropline in droplines(fuente):
+        st.write(dropline)
     simple_recorder(fuente)
 with tab2:
     st.header('Contents of cetram-felix/AUDIO')
