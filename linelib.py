@@ -67,10 +67,19 @@ def video_recorder():
     pass
     # FUTURE: https://blog.streamlit.io/how-to-build-the-streamlit-webrtc-component/   
 
-def simple_recorder():   
+def simple_recorder(fuente):   
+    if fuente == 'CETRAM':
+        msg_in = "Presione para grabar"
+        msg_out = "Grabando... presione para terminar"
+        SUMMARY = 'resumen SOAP:'
+        TRANS = 'TRANSCRIPCION AUDIO:'
+    else:
+        msg_in = "Press to record"
+        msg_out = "Recording, press again to stop"
+        SUMMARY = 'Summary:'
+        TRANS = 'AUDIO TRANSCRIPTION:'
     
-    audio = audiorecorder("Presione para grabar", 
-                          "Grabando... presione para terminar")
+    audio = audiorecorder(msg_in, msg_out)
     
     if len(audio) > 0:
         st.audio(audio.tobytes())
@@ -78,10 +87,10 @@ def simple_recorder():
             text, soap, dts = process(audio.tobytes())
             col1, col2 = st.columns(2)
         
-            st.header(f'TRANSCRIPCION AUDIO:')   # [dt={dts[0]} secs]
+            st.header(TRANS)   # [dt={dts[0]} secs]
             st.info(text)  # was write
 
-            st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
+            st.header(SUMMARY) # [dt={dts[1]} secs]
             st.write(soap)
             st.write('-'*80)
             chunk_summary(text)
