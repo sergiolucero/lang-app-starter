@@ -12,28 +12,27 @@ from langchain import OpenAI
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
+#####################################################
+COMPLETION_MODEL = "text-davinci-003"; TRANSCRIPTION_MODEL = "whisper-1"
+TOP_TOKENS = 3800; VERSION = '0.41_20230907' 
 
-COMPLETION_MODEL = "text-davinci-003"
-CETRAM = True
-if CETRAM:
-    LANGUAGE = 'es'; # for CETRAM
-    #PROMPT = 'Dame los puntos principales del siguiente podcast:'
-    PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
-else:
-    LANGUAGE = 'en'; # was 'es' for CETRAM
-    PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
-
-TRANSCRIPTION_MODEL = "whisper-1"
-TOP_TOKENS = 3800
-VERSION = '0.40_20230829'   # IF CETRAM
+def droplines(fuente):
+    if fuente == 'CETRAM':
+        LANGUAGE = 'es'; # for CETRAM
+        #PROMPT = 'Dame los puntos principales del siguiente podcast:'
+        PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
+    else:
+        LANGUAGE = 'en'; # was 'es' for CETRAM
+        PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
+    droplines = [f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
+            f'Language: {LANGUAGE}. Prompt: {PROMPT}']
+    return droplines 
+    
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
 openai.api_key = os.environ['OPENAI_API_KEY']
 API_KEY = openai.api_key
 ##############################################
-fecha = datetime.now().strftime('%Y-%m-%d')
-
-droplines = [f'(version {VERSION}). Fecha={fecha}. Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
-            f'Language: {LANGUAGE}. Prompt: {PROMPT}']
+#fecha = datetime.now().strftime('%Y-%m-%d')
 ##############################################    
 def tokens(text, completion_model):
     encoding = tiktoken.encoding_for_model(completion_model)
