@@ -4,7 +4,7 @@ from textlib import droplines
 from linelib import simple_recorder 
 ##############################################
 st.set_page_config(layout="wide")
-fuente = st.selectbox(['CETRAM', 'inglés'])
+fuente = st.selectbox('Choose Mode/Elija modo', ['CETRAM', 'inglés'])
 tab1, tab2 = st.tabs(['Grabación','Revisión'])
 with tab1:
     st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
