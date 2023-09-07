@@ -82,6 +82,7 @@ def simple_recorder(fuente):
     print('MSG1:', msg_in)
     print('MSG2:', msg_out)
     audio = audiorecorder(msg_in, msg_out)
+    print('AUDIO:', type(audio))
     
     if len(audio) > 0:
         st.audio(audio.tobytes())
