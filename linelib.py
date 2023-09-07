@@ -78,7 +78,9 @@ def simple_recorder(fuente):
         msg_out = "Recording, press again to stop"
         SUMMARY = 'Summary:'
         TRANS = 'AUDIO TRANSCRIPTION:'
-    
+
+    print('MSG1:', msg_in)
+    print('MSG2:', msg_out)
     audio = audiorecorder(msg_in, msg_out)
     
     if len(audio) > 0:
