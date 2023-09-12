@@ -55,6 +55,7 @@ def soapit(text, completion_model = COMPLETION_MODEL):
     
     MAX_TOKENS = TOP_TOKENS-tokens(text, completion_model)
     print('MAX_TOKENS:', MAX_TOKENS)
+    PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
     try:        # should use LangChain Prompts
         response = openai.Completion.create(
           model=completion_model,
