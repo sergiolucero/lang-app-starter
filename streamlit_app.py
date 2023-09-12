@@ -10,7 +10,7 @@ tab1, tab2 = st.tabs(['Grabación','Revisión'])
 with tab1:
     st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
     for dropline in droplines(fuente):
-        st.write(dropline)
+        st.write(dropline+chr(10))
     simple_recorder(fuente)
 with tab2:
     st.header('Contents of cetram-felix/AUDIO')
