@@ -41,7 +41,7 @@ def tokens(text, completion_model):
     encoding = tiktoken.encoding_for_model(completion_model)
     return len(encoding.encode(text))
 
-def openai_transcribe(fn):
+def openai_transcribe(fn, LANGUAGE='es'):
     audio_file = open(fn, "rb")
     try:
         transcript = openai.Audio.transcribe(TRANSCRIPTION_MODEL, file=audio_file,
