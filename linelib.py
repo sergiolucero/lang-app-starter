@@ -85,7 +85,7 @@ def simple_recorder(fuente):
     print('AUDIO:', type(audio))
     
     if len(audio) > 0:
-        st.audio(audio.tobytes())
+        #st.audio(audio.tobytes())   # muestra el audio para revisión
         with st.spinner('procesando...'):
             text, soap, dts = process(audio.tobytes())
             col1, col2 = st.columns(2)
