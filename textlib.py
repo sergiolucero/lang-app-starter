@@ -26,7 +26,7 @@ def droplines(fuente):
     else:
         LANGUAGE = 'en'; # was 'es' for CETRAM
         PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
-    AR_VERSION = audiorecorder.__version__
+    AR_VERSION = dir(audiorecorder)  # was .__version__
     droplines = [f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
             f'Language: {LANGUAGE}. Prompt: {PROMPT} AR_Version={AR_VERSION}']
     return droplines 
