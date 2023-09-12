@@ -1,0 +1,6 @@
+0. instalar node.js
+1. npm install axios express body-parser
+2. server.js
+3. server.html
+
+https://chat.openai.com/share/3d63dd1c-c48b-432e-8445-e5f2d344eb26
