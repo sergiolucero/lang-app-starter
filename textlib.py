@@ -51,16 +51,21 @@ def openai_transcribe(fn, LANGUAGE='es'):
     
     return transcript
     
-def soapit(text, completion_model = COMPLETION_MODEL):
+def soapit(text, role = None, completion_model = COMPLETION_MODEL):
     
     MAX_TOKENS = TOP_TOKENS-tokens(text, completion_model)
     print('MAX_TOKENS:', MAX_TOKENS)
-    PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
+    if role is not None:
+        PROMPT = 'Resume el texto como si fueras un {role}'
+    else:
+        PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
+    prompt_y_texto = f"{PROMPT}\n\n{text}"
+    
     try:        # should use LangChain Prompts
         response = openai.Completion.create(
           model=completion_model,
           #prompt=f"resume este texto en formato médico SOAP:\n\n{text}",
-          prompt=f"{PROMPT}\n\n{text}",
+          prompt=prompt_y_texto,
           temperature=1, max_tokens=MAX_TOKENS,
           top_p=1.0,frequency_penalty=0.0,presence_penalty=0.0)
         return response.to_dict()['choices'][0]['text']
@@ -113,7 +118,12 @@ def generate_response(txt):    # uses LangChain!
 def text_and_soap(fn): #, fecha, paciente):
     text = openai_transcribe(fn)
     print('TEXT:', text)
-    soap = soapit(text)
+    if text.startswith('Félix') or text.startswith('Felix'):    # indica un rol
+        text = text[5:]
+        rol = text.split()[0]    # neurólogo, sicoanalista
+        soap = soapit(text, rol)
+    else:
+        soap = soapit(text)
     
     # uploading audio + 2 texts           (added 06-15)
     txt_fn = fn.replace('.wav','.txt')
