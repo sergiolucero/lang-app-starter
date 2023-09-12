@@ -44,7 +44,7 @@ def linetab(lines, fecha, paciente):
                          key = head)
     
     if len(audio) > 0:
-        st.audio(audio.tobytes())
+        #st.audio(audio.tobytes())   # esto muestra el audio para su revisión
         with st.spinner('procesando...'):
             text, soap, dts = process(audio.tobytes(), fecha, nombre_paciente)
             col1, col2 = st.columns(2)
