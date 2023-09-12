@@ -4,6 +4,8 @@ import tiktoken
 import time
 import json
 import streamlit as st
+import audiorecorder
+
 from datetime import datetime
 
 from awslib import s3_upload
@@ -24,8 +26,9 @@ def droplines(fuente):
     else:
         LANGUAGE = 'en'; # was 'es' for CETRAM
         PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
+    AR_VERSION = audiorecorder.__version__
     droplines = [f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
-            f'Language: {LANGUAGE}. Prompt: {PROMPT}']
+            f'Language: {LANGUAGE}. Prompt: {PROMPT} AR_Version={AR_VERSION}']
     return droplines 
     
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
