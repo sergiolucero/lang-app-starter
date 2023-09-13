@@ -1,6 +1,7 @@
 boto3
 langchain
 openai
+snowflake-snowpark-python
 streamlit
 streamlit-audiorecorder
 tiktoken
