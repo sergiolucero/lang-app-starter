@@ -15,8 +15,8 @@ from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
 #####################################################
-COMPLETION_MODEL = "text-davinci-003"; TRANSCRIPTION_MODEL = "whisper-1"
-TOP_TOKENS = 3800; VERSION = '0.41_20230907' 
+COMPLETION_MODEL = "gpt-3.5-turbo-instruct"; TRANSCRIPTION_MODEL = "whisper-1"
+TOP_TOKENS = 3800; VERSION = '0.42_20230919' 
 
 def droplines(fuente):
     if fuente == 'CETRAM':
