@@ -63,8 +63,9 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
         PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
     prompt_y_texto = f"{PROMPT}\n\n{text}"
     
+    client = openai.OpenAI()
     try:        # should use LangChain Prompts
-        response = openai.Completion.create(
+        response = client.chat.completions.create(
           model=completion_model,
           prompt = f"resume este texto en formato médico SOAP, agregando dos posibles diagnósticos y exámenes sugeridos:\n\n{text}",
           #prompt = prompt_y_texto,
