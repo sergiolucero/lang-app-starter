@@ -67,7 +67,7 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
     try:        # should use LangChain Prompts
         response = client.chat.completions.create(
           model=completion_model,
-          prompt = f"resume este texto en formato médico SOAP, agregando dos posibles diagnósticos y exámenes sugeridos:\n\n{text}",
+          messages = [f"resume este texto en formato médico SOAP, agregando dos posibles diagnósticos y exámenes sugeridos:\n\n{text}"],
           #prompt = prompt_y_texto,
           temperature=1, max_tokens=MAX_TOKENS,
           top_p=1.0,frequency_penalty=0.0,presence_penalty=0.0)
