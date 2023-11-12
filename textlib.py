@@ -73,7 +73,7 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
           #prompt = prompt_y_texto,
           temperature=1, max_tokens=MAX_TOKENS,
           top_p=1.0,frequency_penalty=0.0,presence_penalty=0.0)
-        return response.text
+        return response.choices[0].message.content
     except Exception as e:
         transcript = f'RESUMEN SOAP FALLIDO: {e}'
         return transcript
