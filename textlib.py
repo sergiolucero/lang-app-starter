@@ -27,8 +27,8 @@ def droplines(fuente):
         LANGUAGE = 'en'; # was 'es' for CETRAM
         PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
     AR_VERSION = 'ARV' #dir(audiorecorder)  # was .__version__
-    droplines = [f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]'
-            f'Language: {LANGUAGE}. Prompt: {PROMPT} AR_Version={AR_VERSION}']
+    droplines = [f'(version {VERSION}). Modelos: [complete={COMPLETION_MODEL}, transcribe={TRANSCRIPTION_MODEL}]',
+                 f'Language: {LANGUAGE}. Prompt: {PROMPT} AR_Version={AR_VERSION}']
     return droplines 
     
 os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_AI_KEY']
