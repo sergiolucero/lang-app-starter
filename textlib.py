@@ -46,7 +46,8 @@ def openai_transcribe(fn, LANGUAGE='es'):
     client = openai.OpenAI()
     try:
         transcript = client.audio.transcritptions.create(TRANSCRIPTION_MODEL, file=audio_file,
-            response_format="text",language=LANGUAGE)# text = transcript.to_dict()['text']
+            response_format="text",language=LANGUAGE).text
+        # text = transcript.to_dict()['text']
     except Exception as e:
         transcript = f'TRANSCRIPCIÓN FALLIDA: (FILE={fn}) \n ERROR={e}'
     
