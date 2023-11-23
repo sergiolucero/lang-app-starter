@@ -45,7 +45,8 @@ def openai_transcribe(fn, LANGUAGE='es'):
     audio_file = open(fn, "rb")
     client = openai.OpenAI()
     if True:
-        transcript = client.audio.transcriptions.create(TRANSCRIPTION_MODEL, audio_file)
+        st.write(f'ia-VERSION={openai.__version__}')
+        transcript = client.audio.transcriptions.create(model=TRANSCRIPTION_MODEL, audio_file)
         text = transcript.text
             #response_format="text",language=LANGUAGE).text
         # text = transcript.to_dict()['text']
