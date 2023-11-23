@@ -44,11 +44,12 @@ def tokens(text, completion_model):
 def openai_transcribe(fn, LANGUAGE='es'):
     audio_file = open(fn, "rb")
     client = openai.OpenAI()
-    try:
+    if True:
         transcript = client.audio.transcriptions.create(TRANSCRIPTION_MODEL, audio_file).text
             #response_format="text",language=LANGUAGE).text
         # text = transcript.to_dict()['text']
-    except Exception as e:
+    #except Exception as e:
+    else:
         transcript = f'TRANSCRIPCIÓN FALLIDA: (FILE={fn}) \n ERROR={e}'
     
     return transcript
