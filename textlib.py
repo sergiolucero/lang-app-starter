@@ -1,4 +1,4 @@
-eimport openai
+eeimport openai
 import glob, os
 import tiktoken
 import time
@@ -136,6 +136,8 @@ def text_and_soap(fn): #, fecha, paciente):
         soap = soapit(text, rol)
     else:
         soap = soapit(text)
+    st.write('SOPAPO')
+    st.write(soap)
     
     # uploading audio + 2 texts           (added 06-15)
     txt_fn = fn.replace('.wav','.txt')
