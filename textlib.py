@@ -22,7 +22,8 @@ def droplines(fuente):
     if fuente == 'CETRAM':
         LANGUAGE = 'es'; # for CETRAM
         #PROMPT = 'Dame los puntos principales del siguiente podcast:'
-        PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
+        #PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
+        PROMPT = 'Resumen de lo que se expone en esta grabación'
     else:
         LANGUAGE = 'en'; # was 'es' for CETRAM
         PROMPT = 'You are a neurologist attending a conference. Write down the main points:'
@@ -152,9 +153,9 @@ def text_and_soap(fn): #, fecha, paciente):
     #open(soap_fn, 'w').write(soap)
     #s3_upload([fn, txt_fn, soap_fn, ficha_fn])
     s3_upload([fn, txt_fn, ficha_fn])
-    dts = [0,1] # random fill
+    #dts = [0,1] # random fill
     
-    return text, soap, dts
+    return text, soap #, dts
 
 def get_chunk_summary(text):
     
