@@ -10,8 +10,8 @@ fuente = st.selectbox('Choose Mode/Elija modo',
 tab1, tab2 = st.tabs(['Grabación','Revisión'])
 
 with tab1:
-    st.title('👨‍⚕️CETRAM QuantMed LLM Doctor🤖')
-    for dropline in droplines(fuente):
+    st.title('👨‍⚕️Félix🤖')
+    for dropline in droplines(fuente)[0]:   # FILTER
         st.write(dropline+chr(10))
     simple_recorder(fuente)
 
