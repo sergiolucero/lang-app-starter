@@ -71,12 +71,12 @@ def simple_recorder(fuente):
     if fuente == 'CETRAM':
         msg_in = "Presione para grabar"
         msg_out = "Grabando... presione para terminar"
-        SUMMARY = 'resumen SOAP:'
+        SUMMARY_HEADER = 'resumen SOAP:'
         TRANS = 'TRANSCRIPCION AUDIO:'
     else:
         msg_in = "Press to record"
         msg_out = "Recording, press again to stop"
-        SUMMARY = 'Summary:'
+        SUMMARY_HEADER = 'Summary:'
         TRANS = 'AUDIO TRANSCRIPTION:'
 
     print('MSG1:', msg_in)
@@ -93,7 +93,7 @@ def simple_recorder(fuente):
             st.header(TRANS)   # [dt={dts[0]} secs]
             st.info(text)  # was write
 
-            st.header(SUMMARY) # [dt={dts[1]} secs]
-            st.write(soap)
+            #st.header(SUMMARY_HEADER) # [dt={dts[1]} secs]
+            #st.write(soap)
             st.write('-'*80)
             chunk_summary(text)
