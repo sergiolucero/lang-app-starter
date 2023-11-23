@@ -65,7 +65,8 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
     
     client = openai.OpenAI()
     try:        # should use LangChain Prompts
-        response = client.chat.completions.create(
+        '''
+            response = client.chat.completions.create(
           model=completion_model,
           messages = [{'role': 'user',
                        'content': f"resume este texto en formato médico SOAP, agregando dos posibles diagnósticos y exámenes sugeridos:\n\n{text}"}
@@ -74,6 +75,8 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
           temperature=1, max_tokens=MAX_TOKENS,
           top_p=1.0,frequency_penalty=0.0,presence_penalty=0.0)
         return response.choices[0].message.content
+        '''
+        return 'NOSOAP'
     except Exception as e:
         transcript = f'RESUMEN SOAP FALLIDO: {e}'
         return transcript
