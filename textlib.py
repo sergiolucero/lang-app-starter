@@ -80,7 +80,7 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
           top_p=1.0,frequency_penalty=0.0,presence_penalty=0.0)
         return response.choices[0].message.content
         '''
-        return 'NOSOAP'
+        return 'NO-SOAP'
     except Exception as e:
         transcript = f'RESUMEN SOAP FALLIDO: {e}'
         return transcript
