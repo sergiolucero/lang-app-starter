@@ -1,4 +1,4 @@
-eimport openai
+import openai
 import glob, os
 import tiktoken
 import time
