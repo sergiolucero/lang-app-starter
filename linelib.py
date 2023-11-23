@@ -58,7 +58,7 @@ def linetab(lines, fecha, paciente):
             #with col2:
             if True:
                 #st.write('add thumbs up/dn buttons to regenerate/accept!')
-                st.header(f'resumen SOAP:') # [dt={dts[1]} secs]
+                st.header(f'resumen SOAP:') 
                 st.write(soap)
                 st.write('-'*80)
                 chunk_summary(text)
