@@ -1,4 +1,4 @@
-import openai
+eimport openai
 import glob, os
 import tiktoken
 import time
@@ -130,12 +130,12 @@ def generate_response(txt):    # uses LangChain!
 def text_and_soap(fn): #, fecha, paciente):
     text = openai_transcribe(fn)
     st.write(text)
-    #if text.startswith('Félix') or text.startswith('Felix'):    # indica un rol
-    #    text = text[5:]
-    #    rol = text.split()[0]    # neurólogo, sicoanalista
-    #    soap = soapit(text, rol)
-    #else:
-    #    soap = soapit(text)
+    if text.startswith('Félix') or text.startswith('Felix'):    # indica un rol
+        text = text[5:]
+        rol = text.split()[0]    # neurólogo, sicoanalista
+        soap = soapit(text, rol)
+    else:
+        soap = soapit(text)
     
     # uploading audio + 2 texts           (added 06-15)
     txt_fn = fn.replace('.wav','.txt')
