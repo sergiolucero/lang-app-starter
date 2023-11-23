@@ -138,9 +138,9 @@ def text_and_soap(fn): #, fecha, paciente):
     #    soap = soapit(text)
     
     # uploading audio + 2 texts           (added 06-15)
-    txt_fn = 'AUDIO'+fn.replace('.wav','.txt')
-    soap_fn = 'AUDIO'+fn.replace('.wav','_soap.txt')
-    ficha_fn = 'AUDIO'+fn.replace('.wav','.json')
+    txt_fn = fn.replace('.wav','.txt')
+    soap_fn = fn.replace('.wav','_soap.txt')
+    ficha_fn = fn.replace('.wav','.json')
     
     ficha = {'fecha': 'fecha', 'paciente': 'paciente', 'wav': soap_fn}  # 8/8 dumb down
     json.dump(ficha, open(ficha_fn, 'w'))
