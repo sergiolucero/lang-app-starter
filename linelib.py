@@ -87,13 +87,13 @@ def simple_recorder(fuente):
     if not audio.empty():
         st.audio(audio.export().read())      # new format
         with st.spinner('procesando...'):
-            text, soap, dts = process(audio)
+            text, soap = process(audio)
             col1, col2 = st.columns(2)
         
-            st.header(TRANS)   # [dt={dts[0]} secs]
+            st.header(TRANS) 
             st.info(text)  # was write
 
-            #st.header(SUMMARY_HEADER) # [dt={dts[1]} secs]
+            #st.header(SUMMARY_HEADER) 
             #st.write(soap)
             st.write('-'*80)
             chunk_summary(text)
