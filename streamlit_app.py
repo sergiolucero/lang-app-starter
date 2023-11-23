@@ -6,7 +6,7 @@ from linelib import simple_recorder
 st.set_page_config(layout="wide")
 #fuente = st.selectbox('Choose Mode/Elija modo', 
 #                      ('CETRAM', 'inglés'))
-
+fuente = 'CETRAM'
 #tab1, tab2 = st.tabs(['Grabación','Revisión'])
 
 #with tab1:
