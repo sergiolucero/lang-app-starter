@@ -45,7 +45,7 @@ def openai_transcribe(fn, LANGUAGE='es'):
     audio_file = open(fn, "rb")
     client = openai.OpenAI()
     if True:
-        st.write(f'ia-VERSION={openai.__version__}')
+        #st.write(f'ia-VERSION={openai.__version__}')
         transcript = client.audio.transcriptions.create(model=TRANSCRIPTION_MODEL, 
                                                         file=audio_file)
         transcript = transcript.text
@@ -129,7 +129,7 @@ def generate_response(txt):    # uses LangChain!
 
 def text_and_soap(fn): #, fecha, paciente):
     text = openai_transcribe(fn)
-    st.write(text)
+    #st.write(text)
     if text.startswith('Félix') or text.startswith('Felix'):    # indica un rol
         text = text[5:]
         rol = text.split()[0]    # neurólogo, sicoanalista
