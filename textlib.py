@@ -65,7 +65,7 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
     if role is not None:
         PROMPT = 'Resume el texto como si fueras un {role}'
     else:
-        PROMPT = 'Dame el resumen de lo que ocurre en este diálogo entre un doctor y su paciente'
+        PROMPT = 'Dame el resumen de lo que ocurre en esta conversación con apoderados'
     prompt_y_texto = f"{PROMPT}\n\n{text}"
     
     client = openai.OpenAI()
@@ -74,7 +74,7 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
             response = client.chat.completions.create(
           model=completion_model,
           messages = [{'role': 'user',
-                       'content': f"resume este texto en formato médico SOAP, agregando dos posibles diagnósticos y exámenes sugeridos:\n\n{text}"}
+                       'content': f"resume este texto desde una perspectiva pedagógica:\n\n{text}"}
                      ],
           #prompt = prompt_y_texto,
           temperature=1, max_tokens=MAX_TOKENS,
@@ -83,7 +83,7 @@ def soapit(text, role = None, completion_model = COMPLETION_MODEL):
         '''
         return 'NO-SOAP'
     except Exception as e:
-        transcript = f'RESUMEN SOAP FALLIDO: {e}'
+        transcript = f'RESUMEN ACADÉMICO FALLIDO: {e}'
         return transcript
         
 def summarize(text, completion_model = COMPLETION_MODEL):
@@ -96,7 +96,7 @@ def summarize(text, completion_model = COMPLETION_MODEL):
             top_p=1.0, frequency_penalty=0.0,presence_penalty=0.0
             )
     except Exception as e:
-        transcript = f'RESUMEN SOAP FALLIDO: {e}'
+        transcript = f'RESUMEN ACADÉMICO FALLIDO: {e}'
         response = get_chunk_summary(text)
         
     return response
